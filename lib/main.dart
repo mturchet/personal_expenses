@@ -62,6 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // ),
   ];
 
+  List<Transaction> get _userOrderedTransactions {
+    return _userTransactions.reversed.toList();
+  }
+
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
       return tx.date.isAfter(
@@ -127,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
               _recentTransactions,
             ),
             // NewTransaction(_addNewTransaction),
-            TransactionList(_userTransactions, _deleteTransaction),
+            TransactionList(_userOrderedTransactions, _deleteTransaction),
           ],
         ),
       ),
